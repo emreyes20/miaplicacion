@@ -41,8 +41,18 @@ public class DemoController {
 
     // Inyección de dependencias usando @Primary
     // Ejemplo con el bean SwimmingCoach
+
+    /*
     @Autowired
     public DemoController (Coach coach){
+        myCoach = coach;
+    }
+     */
+
+    // Ejemplo de inicialización perezosa
+    @Autowired
+    public DemoController(@Qualifier("swimmingCoach") Coach coach){
+        System.out.println("Constructor: " + getClass().getSimpleName());
         myCoach = coach;
     }
 
