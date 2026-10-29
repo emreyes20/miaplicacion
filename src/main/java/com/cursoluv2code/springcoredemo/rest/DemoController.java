@@ -32,8 +32,17 @@ public class DemoController {
      */
 
     // Inyeccion de dependencias con @Qualifier
+    /*
     @Autowired
     public DemoController (@Qualifier("swimmingCoach") Coach coach){
+        myCoach = coach;
+    }
+     */
+
+    // Inyección de dependencias usando @Primary
+    // Ejemplo con el bean SwimmingCoach
+    @Autowired
+    public DemoController (Coach coach){
         myCoach = coach;
     }
 
