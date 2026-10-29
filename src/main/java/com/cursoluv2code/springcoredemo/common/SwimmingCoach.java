@@ -4,8 +4,14 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary //Bean predeterminado para inyección
+
+//Bean predeterminado para inyección
+//@Primary
 public class SwimmingCoach implements Coach {
+
+    public SwimmingCoach(){
+        System.out.println("Constructor: " + getClass().getSimpleName());
+    }
 
     @Override
     public String getDailyWorkout(){
