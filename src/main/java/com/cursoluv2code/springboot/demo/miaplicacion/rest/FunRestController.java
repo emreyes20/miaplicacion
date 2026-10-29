@@ -1,5 +1,6 @@
 package com.cursoluv2code.springboot.demo.miaplicacion.rest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,4 +25,22 @@ public class FunRestController {
     public String getDailyFortune(){
         return "Hoy es tu día de suerte!";
     }
+
+    // Se expone un nuevo endpoint llamado "teaminfo"
+    @GetMapping("/teaminfo")
+    public String getTeamInfo(){
+        return "Coach:" + coachName + " " +
+                "Friend: " + friendName + " " +
+                "Team: " + teamName;
+    }
+
+
+
+    // Inyectando mis propiedades customizadas con la anotación Value
+    @Value("${coach.name}")
+    private String coachName;
+    @Value("${friend.name}")
+    private String friendName;
+    @Value("${team.name}")
+    private String teamName;
 }
