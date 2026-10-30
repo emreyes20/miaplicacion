@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-@Lazy // Inicialización perezosa
+//@Lazy // Inicialización perezosa
 public class FootballCoach implements Coach {
 
     public FootballCoach(){

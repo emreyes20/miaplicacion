@@ -12,48 +12,24 @@ public class DemoController {
     // Definir un atributo
     private Coach myCoach;
 
+    //Se define otro atributo
+    private Coach anotherCoach;
 
-    /*
 
-    // Inyección de dependencias mediante constructor
-    // Omitir @Autowired si solo hay un constructor
     @Autowired
-    public DemoController (Coach coach){
-        myCoach = coach;
-    }
-     */
-
-    // Inyección de dependencias mediante setter
-    /*
-    @Autowired
-    public void setCoach(Coach coach){
-        myCoach = coach;
-    }
-     */
-
-    // Inyeccion de dependencias con @Qualifier
-    /*
-    @Autowired
-    public DemoController (@Qualifier("swimmingCoach") Coach coach){
-        myCoach = coach;
-    }
-     */
-
-    // Inyección de dependencias usando @Primary
-    // Ejemplo con el bean SwimmingCoach
-
-    /*
-    @Autowired
-    public DemoController (Coach coach){
-        myCoach = coach;
-    }
-     */
-
-    // Ejemplo de inicialización perezosa
-    @Autowired
-    public DemoController(@Qualifier("swimmingCoach") Coach coach){
+    public DemoController(
+            @Qualifier("swimmingCoach") Coach coach,
+            @Qualifier("swimmingCoach") Coach otherCoach){
         System.out.println("Constructor: " + getClass().getSimpleName());
         myCoach = coach;
+        anotherCoach = otherCoach;
+    }
+
+    // Nuevo endpoint que compara los beans
+    @GetMapping("/check")
+    public String check(){
+        return "Comparación de beans: myCoach == anotherCoach, " +
+                (myCoach == anotherCoach);
     }
 
     // Nuevo endpoint que usa la dependencia Coach
