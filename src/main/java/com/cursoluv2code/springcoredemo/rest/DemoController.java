@@ -12,24 +12,10 @@ public class DemoController {
     // Definir un atributo
     private Coach myCoach;
 
-    //Se define otro atributo
-    private Coach anotherCoach;
-
-
     @Autowired
-    public DemoController(
-            @Qualifier("swimmingCoach") Coach coach,
-            @Qualifier("swimmingCoach") Coach otherCoach){
+    public DemoController (@Qualifier("swimmingCoach") Coach coach) {
         System.out.println("Constructor: " + getClass().getSimpleName());
         myCoach = coach;
-        anotherCoach = otherCoach;
-    }
-
-    // Nuevo endpoint que compara los beans
-    @GetMapping("/check")
-    public String check(){
-        return "Comparación de beans: myCoach == anotherCoach, " +
-                (myCoach == anotherCoach);
     }
 
     // Nuevo endpoint que usa la dependencia Coach
